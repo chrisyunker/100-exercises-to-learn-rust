@@ -15,7 +15,19 @@ pub fn fibonacci(n: u32) -> u32 {
     //
     // Hint: use a `Vec` to memoize the results you have already calculated
     // so that you don't have to recalculate them several times.
-    todo!()
+
+    if n == 0 { return 0; }
+    if n == 1 { return 1; }
+
+    let mut mem: Vec<u32> = Vec::new();
+    mem.push(0);
+    mem.push(1);
+
+    for i in 2..=n {
+        let f = mem[(i-1) as usize] + mem[(i-2) as usize];
+        mem.push(f)
+    }
+    mem[n as usize]
 }
 
 #[cfg(test)]
